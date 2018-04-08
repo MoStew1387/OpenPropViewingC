@@ -1,0 +1,32 @@
+﻿@model IEnumerable<OpenPropViewing.Models.User.Buyer>
+@{
+    ViewBag.Title = "Buyers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Buyers</h2>
+<h2>Index</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Buyer</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var buyer in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(buyer.FirstName + " " +buyer.LastName, "Details", "Buyers", new { id = buyer.BuyerId }, null)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
